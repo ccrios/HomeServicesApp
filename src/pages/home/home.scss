@@ -1,0 +1,15 @@
+page-home {
+    .ion-list + ion-list {
+        margin-top: 0;
+      }
+      .small-text {
+        font-size: 10px;
+      }
+    .ion-list:first-child {
+        margin-top: 32px;
+      }
+      ion-list + ion-list {
+        margin-top: 0;
+      }
+      
+}

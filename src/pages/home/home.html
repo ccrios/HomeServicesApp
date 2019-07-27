@@ -1,0 +1,120 @@
+<ion-content>
+<ion-list inset>
+
+  <ion-item>
+    <ion-label>Servicio</ion-label>
+    <ion-select [(ngModel)]="idHabilidad" (ngModelChange)="cambiarHabilidad($event)">
+
+        <ion-option placeholder="Tipo de servicio" *ngFor="let hab of habilidades" value={{hab.Id}} >
+            <h2>{{hab.Nombre}}</h2>
+            
+        </ion-option>
+
+
+          
+    </ion-select>
+  </ion-item>
+  
+  <div *ngIf ="habilidad!=null">
+    <ion-item>
+      <ion-label>Servicio Especifico</ion-label>
+      <ion-select [(ngModel)]="idHabilidadEspecifica" (ngModelChange)="cambiarHabilidadEspecifica($event)">
+  
+          <ion-option placeholder="Tipo de servicio" *ngFor="let habEsp of habilidad.HabilidadesEspecificas" value={{habEsp.Id}} >
+              <h2>{{habEsp.Nombre}}</h2>
+          </ion-option>
+  
+  
+            
+      </ion-select>
+    </ion-item>
+
+  </div>
+  
+
+
+
+
+  <ion-item>
+      <ion-label>Fecha de servicio</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="fechaServicio"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Hora de servicio</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="horaServicio"></ion-datetime>
+    </ion-item>
+
+    <ion-input placeholder="Cantidad de horas del servicio"  type="number" [(ngModel)]="cantidadDeHoras" ></ion-input>
+
+
+    <ion-item>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="rangoPrecio" color="dark" min="10000" max="999999" step="5000">
+        <ion-icon range-left small name="logo-usd"></ion-icon>
+        <ion-icon range-right name="logo-usd"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    
+    <div>
+        <ion-label>{{rangoPrecio.lower}} -- {{rangoPrecio.upper}}</ion-label>
+
+    </div>
+
+    <ion-input placeholder="Direccion"  [(ngModel)]="direccion" ></ion-input>
+    
+    <div >
+    <ion-item>
+        <ion-textarea  [(ngModel)]="descripcion"  rows="6" cols="20"  maxlength="300" 	minlength="10" placeholder="Descripcion del servicio" ></ion-textarea>
+    </ion-item>
+    </div>
+
+
+    <ion-item>
+        <ion-label>Elegir Manual</ion-label>
+        <ion-toggle  checked="false"  [(ngModel)]="manual"></ion-toggle>
+    </ion-item>
+
+
+
+    
+</ion-list>
+
+
+
+<ion-card>
+    <ion-card-header>
+      Selecciono
+    </ion-card-header>
+    <ion-card-content>
+
+       {{manual}}
+      
+      <ion-item  *ngIf ="habilidad!=null && habilidadEspecifica " >
+          
+          {{fechaServicio}}
+          --
+          {{horaServicio}}
+          --
+          {{idHabilidad}}
+          --
+          {{habilidad.Nombre}}
+          --
+          {{habilidadEspecifica.Nombre}}
+          --
+          {{cantidadDeHoras}}
+          --
+          {{rangoPrecio.lower}},{{rangoPrecio.upper}}
+      </ion-item>
+   
+      
+    </ion-card-content>
+  </ion-card>
+
+
+<ion-item>
+  <button ion-button color="dark"  (click)="enviarDatosDeFormulario()" >Dark</button>
+</ion-item>
+</ion-content>
+

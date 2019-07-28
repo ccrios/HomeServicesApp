@@ -46,7 +46,13 @@ export class ComponentProvider {
 
       return new Promise(resolve => {
         this.iterator.enviarHabilidades(datos).then(data => {
+          if(data!=null){
           resolve(data);
+          }else
+          {
+          resolve("no se pudo crear servicio");
+          }
+          
         }, err => {
           console.log(err);
         });

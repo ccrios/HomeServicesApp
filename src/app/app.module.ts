@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
@@ -15,6 +16,9 @@ import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
 import { IteratorProvider } from '../providers/iterator/iterator';
 import { ComponentProvider } from '../providers/component/component';
+import { HeaderPage } from '../pages/header/header';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +26,14 @@ import { ComponentProvider } from '../providers/component/component';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    HeaderPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

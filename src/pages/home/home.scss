@@ -1,4 +1,24 @@
-page-home {
+p {
+  font-size: 0.8em;
+  color: #d2d2d2;
+}
+
+ion-slides {
+height: 100%;
+}
+
+ion-slide {
+  display: block;
+}
+
+ion-label, .select-text {
+  margin-left: 10px;
+}
+
+.invalid {
+  border: 1px solid #ea6153;
+}
+
     .ion-list + ion-list {
         margin-top: 0;
       }
@@ -11,5 +31,7 @@ page-home {
       ion-list + ion-list {
         margin-top: 0;
       }
+    
+    
       
-}
+

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { ComponentProvider } from '../../providers/component/component';
 //import { ReactiveFormsModule } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServicioAsignadoPage } from '../servicio-asignado/servicio-asignado';
 //import { IteratorProvider } from '../../providers/iterator/iterator';
 //import { RestProvider } from '../../providers/rest/rest';
 
@@ -47,7 +48,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     public component: ComponentProvider,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public alertCtrl: AlertController
     ) 
   {
 
@@ -65,12 +67,22 @@ export class HomePage {
     this.slideTwoForm = formBuilder.group({
       rangoPrecioF: [ '' ],
       direccionF:  ['', Validators.compose([Validators.required])],
-      descripcion: [''],
+      descripcion: ['']
   
     });
    this.rangoPrecio= { lower: 10000, upper: 15000 };
    this.getHabilidadeslist();
   }
+
+  verMensajeServicioInvalida() {
+    const alert = this.alertCtrl.create({
+      title: 'Solicitud Invalida',
+      subTitle: 'Lo sentimos, en este momento no contamos con disponibilidad de servicio de acuerdo a lo seleccionado.',
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
 
   next(){
     this.signupSlider.slideNext();
@@ -98,6 +110,11 @@ export class HomePage {
 
 }
 
+
+  
+mortrarServicio( servicioAsignado: any ){
+  this.navCtrl.push(ServicioAsignadoPage,servicioAsignado);
+}
 
 
 
@@ -132,7 +149,18 @@ export class HomePage {
     this.component.enviarHabilidades(this.idHabilidadEspecifica,this.descripcion,this.horaServicio,this.cantidadDeHoras,
      this.fechaServicio,this.direccion,this.rangoPrecio.lower,this.rangoPrecio.upper,true,10)
     .then(data => {
-      alert(data);
+      if(data!=null){
+        alert("sii");
+        console.log(data);
+          this.mortrarServicio(data);
+        }else
+        {
+          alert("noo");
+          this.verMensajeServicioInvalida();
+        }
+
+
+      console.log(data);
       alert("creado");
     });
 
@@ -152,6 +180,4 @@ export class HomePage {
     "ClienteId": 10
   };
   
-  
-
 }

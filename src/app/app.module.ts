@@ -18,6 +18,13 @@ import { IteratorProvider } from '../providers/iterator/iterator';
 import { ComponentProvider } from '../providers/component/component';
 import { HeaderPage } from '../pages/header/header';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServicioAsignadoPage } from '../pages/servicio-asignado/servicio-asignado';
+import { DetalleDeServicioPage } from '../pages/detalle-de-servicio/detalle-de-servicio';
+
+
+
+
+
 
 
 @NgModule({
@@ -27,7 +34,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactPage,
     HomePage,
     TabsPage,
-    HeaderPage
+    ServicioAsignadoPage,
+    DetalleDeServicioPage,
+    HeaderPage,
+    DetalleDeServicioPage
   ],
   imports: [
     BrowserModule,
@@ -41,6 +51,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AboutPage,
     ContactPage,
     HomePage,
+    ServicioAsignadoPage,
+    DetalleDeServicioPage,
     TabsPage
   ],
   providers: [

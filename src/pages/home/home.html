@@ -1,30 +1,19 @@
 
-  <ion-header>
-      <ion-toolbar color="navbarColor">
-        <ion-title>
-          Sign Up
-        </ion-title>
-        <img src="resources/imagenes/logo.png"/>
-        <img src="/home/camilo/Escritorio/HomeServicesApp/src/assets/imgs/logo.png"/>
-        
-        <!--button ion-button slot="start">
-          <button ion-button (click)="prev()"><ion-icon slot="start" name="arrow-back"></ion-icon> Prev</button>
-        </button>
-        <button ion-button slot="end">
-          <button ion-button (click)="next()">Next <ion-icon slot="end" name="arrow-forward"></ion-icon></button>
-        </button-->
-      </ion-toolbar>
-  </ion-header>
-  
-  <!--ion-content-->
+ 
+ 
+  <ion-content>
 
+      <ion-toolbar color="navbarColor">
+          <ion-thumbnail align="center">
+              <img src="../../assets/imgs/logo.png">
+          </ion-thumbnail>
+      </ion-toolbar>
   
       <ion-slides #signupSlider pager>
 
           <ion-slide>
-
-            <h1>Solicitar servicio</h1>
-    
+            
+           
             <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
     
             <ion-list  >
@@ -104,7 +93,7 @@
                         <ion-label floating >Direccion</ion-label>
                         <ion-input [class.invalid]="!slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)"   [(ngModel)]="direccion" formControlName="direccionF" type="text"></ion-input>
                     </ion-item>
-                    <ion-item *ngIf="slideTwoForm.controls.direccionF.pending && (slideTwoForm.controls.direccionF.dirty || submitAttempt)">
+                    <ion-item *ngIf="slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)">
                         <p>Please enter a valid address.</p>
                     </ion-item>
 
@@ -131,5 +120,8 @@
           </ion-slide>
     
         </ion-slides>
+
+</ion-content>
+    
 
  

@@ -50,7 +50,7 @@ export class ComponentProvider {
           resolve(data);
           }else
           {
-          resolve("no se pudo crear servicio");
+          resolve(data);
           }
           
         }, err => {

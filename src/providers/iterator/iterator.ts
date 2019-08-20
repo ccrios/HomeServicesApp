@@ -21,9 +21,9 @@ export class IteratorProvider {
   enviarHabilidades(datos){
     console.log(datos);
     return new Promise(resolve => {
-      this.http.post(this.apiUrlEnviarSolicitud+"/api/Servicios?habilidadEspecificaId="+datos.habilidadEspecificaId,datos)
+      this.http.post(this.apiUrlHabilidades+'/users',datos)
          .subscribe(data => {
-           resolve(data);
+           resolve(this.servicioAsignado);
           }, err => {
             console.log(err);
           });
@@ -143,6 +143,78 @@ export class IteratorProvider {
         "FechaMoficiacion": "2019-07-24T15:37:11.84"
     }
 ];
+
+
+servicioAsignado = {
+  "Id": 18,
+  "Descripcion": "arreglar mesa de noche",
+  "HoraServicio": "2019-08-20T17:00:00-05:00",
+  "HorasEstimadas": 1,
+  "FechaServicio": "2019-08-21T00:00:00",
+  "DireccionServicio": "Malhabar car",
+  "PrecioMinimo": 15000.0,
+  "PrecioMaximo": 50000.0,
+  "PSPersonal": false,
+  "Finalizado": false,
+  "ClienteId": 88,
+  "Cliente": {
+    "Puntos": 0,
+    "Servicios": [],
+    "Id": 88,
+    "Nombres": "Hector",
+    "Apellidos": "Perez Penia",
+    "Cedula": "230984823",
+    "Direccion": "carrera 78",
+    "Telefono": "911911321",
+    "FechaNacimiento": "1974-07-26T00:00:00",
+    "Cuenta": null,
+    "FechaCreacion": "2019-05-07T02:00:12",
+    "FechaModificacion": "2019-02-27T05:50:00"
+  },
+  "PSHabilidadEspecificaId": 15,
+  "PSHabilidadEspecifica": {
+    "Id": 15,
+    "PrecioHora": 30000.00,
+    "AniosExperiencia": 2,
+    "PrestadorServicioId": 85,
+    "PrestadorServicio": {
+      "Habilidades": [],
+      "FechaAfiliacion": "2017-07-26T00:00:00",
+      "Id": 85,
+      "Nombres": "Jose",
+      "Apellidos": "Montoya",
+      "Cedula": "43985039",
+      "Direccion": "carrera 78",
+      "Telefono": "911911321",
+      "FechaNacimiento": "1985-07-26T00:00:00",
+      "Cuenta": null,
+      "FechaCreacion": "2019-05-07T02:00:12",
+      "FechaModificacion": "2019-02-27T05:50:00"
+    },
+    "HabilidadEspecificaId": 25,
+    "HabilidadEspecifica": {
+      "Id": 25,
+      "Nombre": "Carpinteria artesanal",
+      "Descripcion": "Esculturas y disenios tradicionales sobre madera",
+      "HabilidadId": 15,
+      "Habilidad": null,
+      "PrestadoresServicio": [],
+      "FechaCreacion": "2019-05-07T02:00:12",
+      "FechaModificacion": "2019-02-27T05:50:00"
+    },
+    "Servicios": [],
+    "FechaCreacion": "2019-05-07T02:00:12",
+    "FechaModificacion": "2019-02-27T05:50:00"
+  },
+  "Pagos": null,
+  "Calificacion": null,
+  "FechaCreacion": "2019-08-20T00:06:20.8883779-05:00",
+  "FechaModificacion": "2019-08-20T00:06:20.8883779-05:00"
+};
+
+
+
+
 
 
 

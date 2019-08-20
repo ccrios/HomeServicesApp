@@ -27,10 +27,7 @@ export class HomePage {
 
   
   habilidades: any;
-  users: any;
-
-
-  habilidad:any;
+  habilidad: any;
   idHabilidad:number;
 
   habilidadEspecifica:any;
@@ -38,18 +35,14 @@ export class HomePage {
 
   fechaServicio:string;
   horaServicio:string;
-
   cantidadDeHoras:number;
 
   rangoPrecio: any;
-
   direccion: any;
-
   descripcion: any;
-
   manual:boolean;
 
-  //credentialsForm: FormGroup;
+  users: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -59,26 +52,25 @@ export class HomePage {
   {
 
     this.slideOneForm = formBuilder.group({
-      firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      age: ['']
+
+      habilidadF: ['', Validators.compose([Validators.required])],
+      habilidadEspecificaF: ['', Validators.compose([Validators.required])],
+      fechaServicioF: ['', Validators.compose([Validators.required])],
+      horaServicioF: ['', Validators.compose([Validators.required])],
+      cantidadDeHorasF:['']
+
+  
     });
 
     this.slideTwoForm = formBuilder.group({
-      username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')])],
-      privacy: ['', Validators.required],
-      bio: ['']
+      rangoPrecioF: [ '' ],
+      direccionF:  ['', Validators.compose([Validators.required])],
+      descripcion: [''],
+  
     });
-   //this.habilidad="";
-   //this.idHabilidad=1;
-  // this.idHabilidadEspecifica=1;
    this.rangoPrecio= { lower: 10000, upper: 15000 };
    this.getHabilidadeslist();
-   console.log(this.habilidades);
   }
-
-
-
 
   next(){
     this.signupSlider.slideNext();
@@ -109,7 +101,7 @@ export class HomePage {
 
 
 
-  cambiarHabilidad(value: any) {
+  cambiarHabilidad() {
     this.habilidades.forEach(element => {
       if(element.Id==this.idHabilidad){
           this.habilidad=element;

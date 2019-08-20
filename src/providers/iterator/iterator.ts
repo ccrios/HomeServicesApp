@@ -18,8 +18,8 @@ export class IteratorProvider {
   }
 
 
-  enviarHabilidades(datos,){
-    alert("enviando");
+  enviarHabilidades(datos){
+    console.log(datos);
     return new Promise(resolve => {
       this.http.post(this.apiUrlEnviarSolicitud+"/api/Servicios?habilidadEspecificaId="+datos.habilidadEspecificaId,datos)
          .subscribe(data => {

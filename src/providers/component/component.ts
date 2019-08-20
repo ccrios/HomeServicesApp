@@ -42,7 +42,7 @@ export class ComponentProvider {
         "ClienteId": ClienteId
       };
 
-      alert(datos);
+      
 
       return new Promise(resolve => {
         this.iterator.enviarHabilidades(datos).then(data => {

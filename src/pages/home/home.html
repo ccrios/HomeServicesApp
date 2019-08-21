@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content style="margin-bottom: 0px !important;">
 
     <ion-toolbar color="navbarColor">
         <ion-thumbnail align="center">
@@ -6,16 +6,16 @@
         </ion-thumbnail>
     </ion-toolbar>
 
-    <ion-slides #signupSlider pager>
+    <ion-slides #signupSlider pager style="margin-top: 0px !important;">
 
         <ion-slide>
-
-
             <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
-
             <ion-list>
 
-                <form [formGroup]="slideOneForm">
+                <form [formGroup]="slideOneForm" >
+                    <ion-title>
+                            Solicitar servicio
+                    </ion-title>
 
                     <ion-item>
                         <ion-label floating>Tipo de servicio</ion-label>
@@ -43,7 +43,7 @@
                     </div>
 
                     <ion-item>
-                        <ion-label floating>Fecha de servicio ("MMM DD YYYY")</ion-label>
+                        <ion-label floating>Fecha de servicio ("MM DD YYYY")</ion-label>
                         <ion-datetime [(ngModel)]="fechaServicio" formControlName="fechaServicioF" type="text"
                             [class.invalid]="!slideOneForm.controls.fechaServicioF.valid && (slideOneForm.controls.fechaServicioF.dirty || submitAttempt)">
                         </ion-datetime>
@@ -112,6 +112,7 @@
                     </ion-item>
 
                     <ion-item>
+                        <ion-label floating>Descripción</ion-label>
                         <ion-textarea formControlName="descripcion" [(ngModel)]="descripcion" rows="6" cols="20"
                             maxlength="300" minlength="10"></ion-textarea>
                     </ion-item>

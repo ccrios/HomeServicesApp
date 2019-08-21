@@ -18,12 +18,12 @@ export class IteratorProvider {
   jsonServicios;
   //localhost/api/Servicios?habilidadEspecificaId={habilidadEspecificaId}
   constructor(public http: HttpClient) {
-    console.log('Hello IteratorProvider Provider');
+    // console.log('Hello IteratorProvider Provider');
     this.initJSON();
   }
 
   enviarHabilidades(datos) {
-    console.log(datos);
+    // console.log(datos);
     return new Promise(resolve => {
       this.http.post(this.apiUrlHabilidades + '/users', datos)
         .subscribe(data => {

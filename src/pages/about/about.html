@@ -1,17 +1,19 @@
 
 <ion-content class="outer-content">
-    
-  <ion-list *ngFor="let servicio of servicios">
-      <ion-toolbar color="navbarColor">
-          <ion-thumbnail align="center">
-              <img src="../../assets/imgs/logo.png">
-          </ion-thumbnail>
-      </ion-toolbar>
-    <ion-item>
+
+  <ion-toolbar color="navbarColor">
+    <ion-thumbnail align="center">
+        <img src="../../assets/imgs/logo.png">
+    </ion-thumbnail>
+</ion-toolbar>
+
+  <ion-list>
+      
+    <ion-item  *ngFor="let servicio of servicios" (click) = "verDetalle(servicio);">
       <ion-avatar item-start>
         <ion-icon name="build"></ion-icon>
       </ion-avatar>
-      <h2>{{servicio.Nombre}}</h2>
+      <h2>{{servicio.Id}}</h2>
       <p>{{servicio.Descripcion}}</p>
     </ion-item>
   </ion-list>

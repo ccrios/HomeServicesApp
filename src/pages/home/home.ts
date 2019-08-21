@@ -102,7 +102,6 @@ export class HomePage {
       this.signupSlider.slideTo(1);
     }
     else {
-      console.log("success!")
       console.log(this.slideOneForm.value);
       console.log(this.slideTwoForm.value);
     }
@@ -140,7 +139,7 @@ export class HomePage {
     this.component.getHabilidades()
       .then(data => {
         this.habilidades = data;
-        console.log(this.habilidades);
+        // console.log(this.habilidades);
       });
   }
 
@@ -149,17 +148,14 @@ export class HomePage {
       this.fechaServicio, this.direccion, this.rangoPrecio.lower, this.rangoPrecio.upper, true, 10)
       .then(data => {
         if (data != null) {
-          alert("sii");
-          console.log(data);
+          // console.log(data);
           this.mortrarServicio(data);
         } else {
-          alert("noo");
           this.verMensajeServicioInvalida();
         }
 
 
-        console.log(data);
-        alert("creado");
+        // console.log(data);
       });
 
 

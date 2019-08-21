@@ -18,8 +18,8 @@ export class HeaderPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HeaderPage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad HeaderPage');
+  // }
 
 }

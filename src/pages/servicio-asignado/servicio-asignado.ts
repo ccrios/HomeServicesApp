@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DetalleDeServicioPage } from '../detalle-de-servicio/detalle-de-servicio';
 import { HomePage } from '../home/home';
-
-
-
+import { InfoPsPage } from '../info-ps/info-ps';
+import { PaypalPage } from '../paypal/paypal';
 
 
 /**
@@ -30,7 +29,6 @@ export class ServicioAsignadoPage {
     this.datosServicio = navParams.data;
     this.ps = this.datosServicio.PSHabilidadEspecifica.PrestadorServicio;
     this.cliente = this.datosServicio.Cliente;
-    console.log();
 
   }
 
@@ -38,14 +36,15 @@ export class ServicioAsignadoPage {
     this.navCtrl.push(DetalleDeServicioPage, this.datosServicio);
   }
 
+  mostrarInfoPS(){
+    this.navCtrl.push(InfoPsPage, this.datosServicio);
+  }
+
   cancelar() {
     this.navCtrl.push(HomePage);
   }
   aceptar() {
-
+    this.navCtrl.push(PaypalPage);
   }
-
-
-
 
 }

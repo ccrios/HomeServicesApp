@@ -17,7 +17,7 @@ export class ComponentProvider {
     public http: HttpClient,
     public iterator: IteratorProvider
   ) {
-    console.log('Hello ComponentProvider Provider');
+    // console.log('Hello ComponentProvider Provider');
   }
 
   enviarHabilidades(habilidadEspecificaId,

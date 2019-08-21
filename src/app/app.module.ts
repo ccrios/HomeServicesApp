@@ -20,13 +20,9 @@ import { HeaderPage } from '../pages/header/header';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServicioAsignadoPage } from '../pages/servicio-asignado/servicio-asignado';
 import { DetalleDeServicioPage } from '../pages/detalle-de-servicio/detalle-de-servicio';
-
-
-
-
-
-
-
+import { DetalleTodosServiciosPage } from '../pages/detalle-todos-servicios/detalle-todos-servicios';
+import { InfoPsPage } from '../pages/info-ps/info-ps';
+import { PaypalPage } from '../pages/paypal/paypal';
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +33,9 @@ import { DetalleDeServicioPage } from '../pages/detalle-de-servicio/detalle-de-s
     ServicioAsignadoPage,
     DetalleDeServicioPage,
     HeaderPage,
-    DetalleDeServicioPage
+    DetalleTodosServiciosPage,
+    InfoPsPage,
+    PaypalPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +51,10 @@ import { DetalleDeServicioPage } from '../pages/detalle-de-servicio/detalle-de-s
     HomePage,
     ServicioAsignadoPage,
     DetalleDeServicioPage,
-    TabsPage
+    TabsPage,
+    DetalleTodosServiciosPage,
+    InfoPsPage,
+    PaypalPage
   ],
   providers: [
     StatusBar,

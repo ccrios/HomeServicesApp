@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ComponentProvider } from '../../providers/component/component';
-
+import { DetalleTodosServiciosPage } from '../detalle-todos-servicios/detalle-todos-servicios';
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -26,16 +26,20 @@ export class AboutPage {
       timeEnds: '1990-02-20'
     };
 
-    this.getHabilidadeslist();
+    this.getServicioslist();
   }
 
-  getHabilidadeslist() {
-    this.component.getHabilidades()
+  getServicioslist() {
+    this.component.getServicios()
       .then(data => {
         this.servicios = data;
-        console.log(this.servicios);
+        //console.log(this.servicios)
       });
   }
 
+  verDetalle(servicio){
+    //console.log(servicio);
+    this.navCtrl.push(DetalleTodosServiciosPage, servicio);
 
+  }
 }

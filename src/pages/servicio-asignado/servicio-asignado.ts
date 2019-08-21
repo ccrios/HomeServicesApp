@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { DetalleDeServicioPage } from '../detalle-de-servicio/detalle-de-servicio';
 import { HomePage } from '../home/home';
 
@@ -22,30 +22,30 @@ import { HomePage } from '../home/home';
 export class ServicioAsignadoPage {
 
   datosServicio: any;
-  servicio:any;
+  servicio: any;
   cliente: any;
   ps: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.datosServicio=navParams.data;
-    this.ps=this.datosServicio.PSHabilidadEspecifica.PrestadorServicio;
-    this.cliente=this.datosServicio.Cliente;
+    this.datosServicio = navParams.data;
+    this.ps = this.datosServicio.PSHabilidadEspecifica.PrestadorServicio;
+    this.cliente = this.datosServicio.Cliente;
     console.log();
 
   }
-  
-  mostrarDetallesService(){
-    this.navCtrl.push(DetalleDeServicioPage,this.datosServicio);
+
+  mostrarDetallesService() {
+    this.navCtrl.push(DetalleDeServicioPage, this.datosServicio);
   }
 
-  cancelar(){
+  cancelar() {
     this.navCtrl.push(HomePage);
   }
-  aceptar(){
+  aceptar() {
 
   }
 
- 
+
 
 
 }

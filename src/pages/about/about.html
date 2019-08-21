@@ -1,43 +1,47 @@
 
-<ion-header>
-    <ion-navbar color="navbarColor">
-      <ion-title>Logo</ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-content class="outer-content">
-     
+<ion-content class="outer-content">
+    
+  <ion-list *ngFor="let servicio of servicios">
+      <ion-toolbar color="navbarColor">
+          <ion-thumbnail align="center">
+              <img src="../../assets/imgs/logo.png">
+          </ion-thumbnail>
+      </ion-toolbar>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon name="build"></ion-icon>
+      </ion-avatar>
+      <h2>{{servicio.Nombre}}</h2>
+      <p>{{servicio.Descripcion}}</p>
+    </ion-item>
+  </ion-list>
+  <!-- <form [formGroup]="credentialsForm">
 
-  
-      <form [formGroup]="credentialsForm">
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['email']" type="email"></ion-input>
+    </ion-item>
 
-          <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input [formControl]="credentialsForm.controls['email']"
-                type="email"></ion-input>
-          </ion-item>
-          
-          <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input [formControl]="credentialsForm.controls['password']"
-                type="password"></ion-input>
-          </ion-item>      
-        
-          <ion-row>
-            <ion-col text-center>
-              <button ion-button block color="secondary" (click)="onSignIn()">
-                Sign in
-              </button>
-            </ion-col>
-          </ion-row>
-        
-          <ion-row>
-            <ion-col text-center>
-              <button ion-button clear color="light" (click)="onForgotPassword()">
-                Forgot your password?
-              </button>
-            </ion-col>
-          </ion-row>
-        
-        </form>
-  </ion-content>
-  
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['password']" type="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block color="secondary" (click)="onSignIn()">
+          Sign in
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button clear color="light" (click)="onForgotPassword()">
+          Forgot your password?
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form> -->
+</ion-content>

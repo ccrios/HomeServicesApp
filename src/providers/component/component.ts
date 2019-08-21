@@ -12,69 +12,61 @@ import { IteratorProvider } from '../iterator/iterator';
 @Injectable()
 export class ComponentProvider {
 
-  habilidades:any;
+  habilidades: any;
   constructor(
     public http: HttpClient,
     public iterator: IteratorProvider
-    ) 
-    {
+  ) {
     console.log('Hello ComponentProvider Provider');
-    }
+  }
 
+  enviarHabilidades(habilidadEspecificaId,
+    Descripcion, HoraServicio, HorasEstimadas,
+    FechaServicio, DireccionServicio, PrecioMinimo, PrecioMaximo, PSPersonal, ClienteId) {
 
+    var datos = {
+      "habilidadEspecificaId": habilidadEspecificaId,
+      "Descripcion": Descripcion,
+      "HoraServicio": HoraServicio,
+      "HorasEstimadas": HorasEstimadas,
+      "FechaServicio": FechaServicio,
+      "DireccionServicio": DireccionServicio,
+      "PrecioMinimo": PrecioMinimo,
+      "PrecioMaximo": PrecioMaximo,
+      "PSPersonal": PSPersonal,
+      "ClienteId": ClienteId
+    };
 
-
-    enviarHabilidades(habilidadEspecificaId,
-      Descripcion,HoraServicio,HorasEstimadas,
-      FechaServicio,DireccionServicio,PrecioMinimo,PrecioMaximo,PSPersonal,ClienteId){
-      
-
-      var datos={
-        "habilidadEspecificaId": habilidadEspecificaId,
-        "Descripcion": Descripcion,
-        "HoraServicio": HoraServicio,
-        "HorasEstimadas": HorasEstimadas,
-        "FechaServicio": FechaServicio,
-        "DireccionServicio": DireccionServicio,
-        "PrecioMinimo": PrecioMinimo,
-        "PrecioMaximo": PrecioMaximo,
-        "PSPersonal": PSPersonal,
-        "ClienteId": ClienteId
-      };
-
-      
-
-      return new Promise(resolve => {
-        this.iterator.enviarHabilidades(datos).then(data => {
-          if(data!=null){
+    return new Promise(resolve => {
+      this.iterator.enviarHabilidades(datos).then(data => {
+        if (data != null) {
           resolve(data);
-          }else
-          {
+        } else {
           resolve(data);
-          }
-          
-        }, err => {
-          console.log(err);
-        });
+        }
+      }, err => {
+        console.log(err);
       });
-  
-  
-    }
+    });
+  }
 
-    
-    getHabilidades() {
+  getHabilidades() {
+    return new Promise(resolve => {
+      this.iterator.getHabilidades().then(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 
-        return new Promise(resolve => {
-          this.iterator.getHabilidades().then(data => {
-            resolve(data);
-          }, err => {
-            console.log(err);
-          });
-        });
-  
-       
-    }
-
-    
-
+  getServicios() {
+    return new Promise(resolve => {
+      this.iterator.getServicios().then(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

@@ -6,41 +6,40 @@
 -->
 
 
-<ion-content >
-    <ion-toolbar color="navbarColor">
-        <ion-thumbnail align="center">
-            <img src="../../assets/imgs/logo.png">
-        </ion-thumbnail>
-    </ion-toolbar>
+<ion-content>
+  <ion-toolbar color="navbarColor">
+    <ion-thumbnail align="center">
+      <img src="../../assets/imgs/logo.png">
+    </ion-thumbnail>
+  </ion-toolbar>
 
+  <ion-list>
 
-    <ion-list>
-      
-        <h1 align="center">Tu servicio fue asignado con exito!</h1>
-      <ion-item>
-        <h2>Fecha: {{datosServicio.FechaServicio}}</h2>
-      </ion-item>
-      <ion-item>
-        <h2>Hora: {{datosServicio.HoraServicio}}</h2>
-      </ion-item>
-      <ion-item>
-        <h2>Profesional: {{ps.Nombre}}  {{ps.Apellido}}</h2>
-      </ion-item>
-      <ion-item>
-        <h2>Precio: $</h2>
-      </ion-item>
-        <ion-label align="center" (click)=mostrarDetallesService() color="primary">Detalles de servicio</ion-label>
-      </ion-list>
-        <div align="center">
-        <button ion-button (click)="aceptar()">
-            Aceptar
-          </button>
+    <h1 align="center">Tu servicio fue asignado con exito!</h1>
+    <ion-item>
+      <h2>Fecha: {{datosServicio.FechaServicio}}</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Hora: {{datosServicio.HoraServicio}}</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Profesional: {{ps.Nombre}} {{ps.Apellido}}</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Precio: $</h2>
+    </ion-item>
+    <ion-label align="center" (click)=mostrarDetallesService() color="primary">Detalles de servicio</ion-label>
+  </ion-list>
+  <div align="center">
+    <button ion-button (click)="aceptar()">
+      Aceptar
+    </button>
 
-          <button ion-button (click)="cancelar()">
-              Cancelar
-          </button>
-        </div>
-    
+    <button ion-button (click)="cancelar()">
+      Cancelar
+    </button>
+  </div>
+
 
 
 </ion-content>

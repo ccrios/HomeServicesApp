@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ServicioAsignadoPage } from '../servicio-asignado/servicio-asignado';
 
 /**
@@ -18,11 +18,11 @@ export class DetalleDeServicioPage {
   datosServicio: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.datosServicio=navParams.data;
+    this.datosServicio = navParams.data;
   }
 
-  continuar(){
-    this.navCtrl.push(ServicioAsignadoPage,this.datosServicio);
+  continuar() {
+    this.navCtrl.push(ServicioAsignadoPage, this.datosServicio);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetalleDeServicioPage');

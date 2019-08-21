@@ -1,127 +1,139 @@
+<ion-content>
 
- 
- 
-  <ion-content>
+    <ion-toolbar color="navbarColor">
+        <ion-thumbnail align="center">
+            <img src="../../assets/imgs/logo.png">
+        </ion-thumbnail>
+    </ion-toolbar>
 
-      <ion-toolbar color="navbarColor">
-          <ion-thumbnail align="center">
-              <img src="../../assets/imgs/logo.png">
-          </ion-thumbnail>
-      </ion-toolbar>
-  
-      <ion-slides #signupSlider pager>
+    <ion-slides #signupSlider pager>
 
-          <ion-slide>
-            
-           
+        <ion-slide>
+
+
             <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
-    
-            <ion-list  >
-    
+
+            <ion-list>
+
                 <form [formGroup]="slideOneForm">
 
                     <ion-item>
                         <ion-label floating>Tipo de servicio</ion-label>
-                        <ion-select [(ngModel)]="idHabilidad" (ionChange)="cambiarHabilidad()" formControlName="habilidadF" [class.invalid]="!slideOneForm.controls.habilidadF.valid && (slideOneForm.controls.habilidadF.dirty || submitAttempt)">
-                            <ion-option  *ngFor="let hab of habilidades" value={{hab.Id}} >
+                        <ion-select [(ngModel)]="idHabilidad" (ionChange)="cambiarHabilidad()"
+                            formControlName="habilidadF"
+                            [class.invalid]="!slideOneForm.controls.habilidadF.valid && (slideOneForm.controls.habilidadF.dirty || submitAttempt)">
+                            <ion-option *ngFor="let hab of habilidades" value={{hab.Id}}>
                                 <h2>{{hab.Nombre}}</h2>
                             </ion-option>
                         </ion-select>
                     </ion-item>
 
 
-                    <div *ngIf ="habilidad!=null">
+                    <div *ngIf="habilidad!=null">
                         <ion-item>
-                          <ion-label floating>Servicio Especifico</ion-label>
-                          <ion-select [(ngModel)]="idHabilidadEspecifica" (click)="cambiarHabilidadEspecifica()"  formControlName="habilidadEspecificaF" [class.invalid]="!slideOneForm.controls.habilidadEspecificaF.valid && (slideOneForm.controls.habilidadEspecificaF.dirty || submitAttempt)">
-                              <ion-option *ngFor="let habEsp of habilidad.HabilidadesEspecificas" value={{habEsp.Id}} >
-                                  <h2>{{habEsp.Nombre}}</h2>
-                              </ion-option>
-                          </ion-select>
+                            <ion-label floating>Servicio Especifico</ion-label>
+                            <ion-select [(ngModel)]="idHabilidadEspecifica" (click)="cambiarHabilidadEspecifica()"
+                                formControlName="habilidadEspecificaF"
+                                [class.invalid]="!slideOneForm.controls.habilidadEspecificaF.valid && (slideOneForm.controls.habilidadEspecificaF.dirty || submitAttempt)">
+                                <ion-option *ngFor="let habEsp of habilidad.HabilidadesEspecificas" value={{habEsp.Id}}>
+                                    <h2>{{habEsp.Nombre}}</h2>
+                                </ion-option>
+                            </ion-select>
                         </ion-item>
                     </div>
 
                     <ion-item>
                         <ion-label floating>Fecha de servicio ("MMM DD YYYY")</ion-label>
-                        <ion-datetime  [(ngModel)]="fechaServicio" formControlName="fechaServicioF" type="text" [class.invalid]="!slideOneForm.controls.fechaServicioF.valid && (slideOneForm.controls.fechaServicioF.dirty || submitAttempt)"></ion-datetime>
+                        <ion-datetime [(ngModel)]="fechaServicio" formControlName="fechaServicioF" type="text"
+                            [class.invalid]="!slideOneForm.controls.fechaServicioF.valid && (slideOneForm.controls.fechaServicioF.dirty || submitAttempt)">
+                        </ion-datetime>
                     </ion-item>
-                    <ion-item *ngIf="!slideOneForm.controls.fechaServicioF.valid  && (slideOneForm.controls.fechaServicioF.dirty || submitAttempt)">
-                          <p>Please enter a valid Date.</p>
+                    <ion-item
+                        *ngIf="!slideOneForm.controls.fechaServicioF.valid  && (slideOneForm.controls.fechaServicioF.dirty || submitAttempt)">
+                        <p>Please enter a valid Date.</p>
                     </ion-item>
 
                     <ion-item>
-                        <ion-label floating >Hora de servicio</ion-label>
-                        <ion-datetime  displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="horaServicio" formControlName="horaServicioF"  [class.invalid]="!slideOneForm.controls.horaServicioF.valid && (slideOneForm.controls.horaServicioF.dirty || submitAttempt)"></ion-datetime>
+                        <ion-label floating>Hora de servicio</ion-label>
+                        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="horaServicio"
+                            formControlName="horaServicioF"
+                            [class.invalid]="!slideOneForm.controls.horaServicioF.valid && (slideOneForm.controls.horaServicioF.dirty || submitAttempt)">
+                        </ion-datetime>
                     </ion-item>
-                    <ion-item *ngIf="!slideOneForm.controls.horaServicioF.valid  && (slideOneForm.controls.horaServicioF.dirty || submitAttempt)">
+                    <ion-item
+                        *ngIf="!slideOneForm.controls.horaServicioF.valid  && (slideOneForm.controls.horaServicioF.dirty || submitAttempt)">
                         <p>Please enter a valid Time.</p>
-                  </ion-item>
+                    </ion-item>
 
-                  <ion-item>
-                      <ion-label floating >Cantidad de horas del servicio</ion-label>
-                      <ion-input   type="number" [(ngModel)]="cantidadDeHoras" formControlName="cantidadDeHorasF"  [class.invalid]="!slideOneForm.controls.cantidadDeHorasF.valid && (slideOneForm.controls.cantidadDeHorasF.dirty || submitAttempt)"></ion-input>
-                  </ion-item>
-                  <ion-item *ngIf="!slideOneForm.controls.cantidadDeHorasF.valid  && (slideOneForm.controls.cantidadDeHorasF.dirty || submitAttempt)">
-                      <p>Please enter a valid number.</p>
-                  </ion-item>
+                    <ion-item>
+                        <ion-label floating>Cantidad de horas del servicio</ion-label>
+                        <ion-input type="number" [(ngModel)]="cantidadDeHoras" formControlName="cantidadDeHorasF"
+                            [class.invalid]="!slideOneForm.controls.cantidadDeHorasF.valid && (slideOneForm.controls.cantidadDeHorasF.dirty || submitAttempt)">
+                        </ion-input>
+                    </ion-item>
+                    <ion-item
+                        *ngIf="!slideOneForm.controls.cantidadDeHorasF.valid  && (slideOneForm.controls.cantidadDeHorasF.dirty || submitAttempt)">
+                        <p>Please enter a valid number.</p>
+                    </ion-item>
 
 
-    
+
                 </form>
-    
+
             </ion-list>
-    
-          </ion-slide>
-    
-          <ion-slide>
-    
-            <ion-list >
-    
+
+        </ion-slide>
+
+        <ion-slide>
+
+            <ion-list>
+
                 <form [formGroup]="slideTwoForm">
 
                     <ion-item>
-                        <ion-label >Rango de precios</ion-label>
-                        <ion-range dualKnobs="true" pin="true" [(ngModel)]="rangoPrecio" formControlName="rangoPrecioF" color="dark" min="10000" max="999999" step="5000"
-                        [class.invalid]="!slideTwoForm.controls.rangoPrecioF.valid && (slideTwoForm.controls.rangoPrecioF.dirty || submitAttempt)">
-                          <ion-icon range-left small name="logo-usd"></ion-icon>
-                          <ion-icon range-right name="logo-usd"></ion-icon>
+                        <ion-label>Rango de precios</ion-label>
+                        <ion-range dualKnobs="true" pin="true" [(ngModel)]="rangoPrecio" formControlName="rangoPrecioF"
+                            color="dark" min="10000" max="999999" step="5000"
+                            [class.invalid]="!slideTwoForm.controls.rangoPrecioF.valid && (slideTwoForm.controls.rangoPrecioF.dirty || submitAttempt)">
+                            <ion-icon range-left small name="logo-usd"></ion-icon>
+                            <ion-icon range-right name="logo-usd"></ion-icon>
                         </ion-range>
-                    </ion-item>
-                  
-    
-                    <ion-item>
-                        <ion-label floating >Direccion</ion-label>
-                        <ion-input [class.invalid]="!slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)"   [(ngModel)]="direccion" formControlName="direccionF" type="text"></ion-input>
-                    </ion-item>
-                    <ion-item *ngIf="slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)">
-                        <p>Please enter a valid address.</p>
                     </ion-item>
 
                     <ion-item>
-                        <ion-textarea formControlName="descripcion" [(ngModel)]="descripcion"  rows="6" cols="20"  maxlength="300" 	minlength="10" ></ion-textarea>
+                        <ion-label floating>Dirección</ion-label>
+                        <ion-input
+                            [class.invalid]="!slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)"
+                            [(ngModel)]="direccion" formControlName="direccionF" type="text"></ion-input>
+                    </ion-item>
+                    <ion-item
+                        *ngIf="!slideTwoForm.controls.direccionF.valid && (slideTwoForm.controls.direccionF.dirty || submitAttempt)">
+                        <p>Por favor ingrese una dirección válida.</p>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-textarea formControlName="descripcion" [(ngModel)]="descripcion" rows="6" cols="20"
+                            maxlength="300" minlength="10"></ion-textarea>
                     </ion-item>
 
 
                     <ion-item>
                         <ion-label>Elegir Manual</ion-label>
-                        <ion-toggle  checked="false" ></ion-toggle>
+                        <ion-toggle checked="false"></ion-toggle>
                     </ion-item>
-    
-  
-    
+
+
+
                 </form>
-    
+
             </ion-list>
-    
-            
-            <button ion-button color="dark"  expand="full" (click)="enviarDatosDeFormulario()" >Solicitar</button>
-      
-    
-          </ion-slide>
-    
-        </ion-slides>
+
+
+            <button ion-button color="dark" expand="full" (click)="enviarDatosDeFormulario()">Solicitar</button>
+
+
+        </ion-slide>
+
+    </ion-slides>
 
 </ion-content>
-    
-
- 

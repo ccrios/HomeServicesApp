@@ -18,40 +18,39 @@ export class HomePage {
 
   @ViewChild('signupSlider') signupSlider;
 
-	public slideOneForm: FormGroup;
-	public slideTwoForm: FormGroup;
+  public slideOneForm: FormGroup;
+  public slideTwoForm: FormGroup;
 
-	public submitAttempt: boolean = false;
-
-
+  public submitAttempt: boolean = false;
 
 
-  
+
+
+
   habilidades: any;
   habilidad: any;
-  idHabilidad:number;
+  idHabilidad: number;
 
-  habilidadEspecifica:any;
-  idHabilidadEspecifica:number;
+  habilidadEspecifica: any;
+  idHabilidadEspecifica: number;
 
-  fechaServicio:string;
-  horaServicio:string;
-  cantidadDeHoras:number;
+  fechaServicio: string;
+  horaServicio: string;
+  cantidadDeHoras: number;
 
   rangoPrecio: any;
   direccion: any;
   descripcion: any;
-  manual:boolean;
+  manual: boolean;
 
   users: any;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public component: ComponentProvider,
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController
-    ) 
-  {
+  ) {
 
     this.slideOneForm = formBuilder.group({
 
@@ -59,19 +58,19 @@ export class HomePage {
       habilidadEspecificaF: ['', Validators.compose([Validators.required])],
       fechaServicioF: ['', Validators.compose([Validators.required])],
       horaServicioF: ['', Validators.compose([Validators.required])],
-      cantidadDeHorasF:['']
+      cantidadDeHorasF: ['']
 
-  
+
     });
 
     this.slideTwoForm = formBuilder.group({
-      rangoPrecioF: [ '' ],
-      direccionF:  ['', Validators.compose([Validators.required])],
+      rangoPrecioF: [''],
+      direccionF: ['', Validators.compose([Validators.required])],
       descripcion: ['']
-  
+
     });
-   this.rangoPrecio= { lower: 10000, upper: 15000 };
-   this.getHabilidadeslist();
+    this.rangoPrecio = { lower: 10000, upper: 15000 };
+    this.getHabilidadeslist();
   }
 
   verMensajeServicioInvalida() {
@@ -84,90 +83,89 @@ export class HomePage {
   }
 
 
-  next(){
+  next() {
     this.signupSlider.slideNext();
   }
 
-  prev(){
-      this.signupSlider.slidePrev();
+  prev() {
+    this.signupSlider.slidePrev();
   }
 
-  save(){
+  save() {
 
     this.submitAttempt = true;
 
-    if(!this.slideOneForm.valid){
-        this.signupSlider.slideTo(0);
-    } 
-    else if(!this.slideTwoForm.valid){
-        this.signupSlider.slideTo(1);
+    if (!this.slideOneForm.valid) {
+      this.signupSlider.slideTo(0);
+    }
+    else if (!this.slideTwoForm.valid) {
+      this.signupSlider.slideTo(1);
     }
     else {
-        console.log("success!")
-        console.log(this.slideOneForm.value);
-        console.log(this.slideTwoForm.value);
+      console.log("success!")
+      console.log(this.slideOneForm.value);
+      console.log(this.slideTwoForm.value);
     }
 
-}
+  }
 
 
-  
-mortrarServicio( servicioAsignado: any ){
-  this.navCtrl.push(ServicioAsignadoPage,servicioAsignado);
-}
+
+  mortrarServicio(servicioAsignado: any) {
+    this.navCtrl.push(ServicioAsignadoPage, servicioAsignado);
+  }
 
 
 
   cambiarHabilidad() {
     this.habilidades.forEach(element => {
-      if(element.Id==this.idHabilidad){
-          this.habilidad=element;
+      if (element.Id == this.idHabilidad) {
+        this.habilidad = element;
       }
     });
   }
 
   cambiarHabilidadEspecifica(value: any) {
     this.habilidad.HabilidadesEspecificas.forEach(element => {
-      if(element.Id==this.idHabilidadEspecifica){
-          this.habilidadEspecifica=element;
+      if (element.Id == this.idHabilidadEspecifica) {
+        this.habilidadEspecifica = element;
       }
     });
   }
-  
-  
-  
-  getHabilidadeslist(){
+
+
+
+  getHabilidadeslist() {
 
     this.component.getHabilidades()
-    .then(data => {
-      this.habilidades = data;
-      console.log(this.habilidades);
-    });
+      .then(data => {
+        this.habilidades = data;
+        console.log(this.habilidades);
+      });
   }
 
-  enviarDatosDeFormulario(){
-    this.component.enviarHabilidades(this.idHabilidadEspecifica,this.descripcion,this.horaServicio,this.cantidadDeHoras,
-     this.fechaServicio,this.direccion,this.rangoPrecio.lower,this.rangoPrecio.upper,true,10)
-    .then(data => {
-      if(data!=null){
-        alert("sii");
-        console.log(data);
+  enviarDatosDeFormulario() {
+    this.component.enviarHabilidades(this.idHabilidadEspecifica, this.descripcion, this.horaServicio, this.cantidadDeHoras,
+      this.fechaServicio, this.direccion, this.rangoPrecio.lower, this.rangoPrecio.upper, true, 10)
+      .then(data => {
+        if (data != null) {
+          alert("sii");
+          console.log(data);
           this.mortrarServicio(data);
-        }else
-        {
+        } else {
           alert("noo");
           this.verMensajeServicioInvalida();
         }
 
 
-      console.log(data);
-      alert("creado");
-    });
+        console.log(data);
+        alert("creado");
+      });
 
 
   }
 
-  jsonForm={
+  jsonForm = {
     "habilidadEspecificaId": 1,
     "Descripcion": "sample string 2",
     "HoraServicio": "2019-07-26T18:47:41.849285-05:00",
@@ -179,5 +177,5 @@ mortrarServicio( servicioAsignado: any ){
     "PSPersonal": true,
     "ClienteId": 10
   };
-  
+
 }

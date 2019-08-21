@@ -44,6 +44,7 @@ export class HomePage {
   manual: boolean;
 
   users: any;
+  initScreen: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +53,7 @@ export class HomePage {
     public alertCtrl: AlertController
   ) {
 
+    this.initScreen = true;
     this.slideOneForm = formBuilder.group({
 
       habilidadF: ['', Validators.compose([Validators.required])],
@@ -71,6 +73,7 @@ export class HomePage {
     });
     this.rangoPrecio = { lower: 10000, upper: 15000 };
     this.getHabilidadeslist();
+    this.init();
   }
 
   verMensajeServicioInvalida() {
@@ -81,6 +84,13 @@ export class HomePage {
     });
     alert.present();
   }
+
+  init(){
+    setTimeout(() => {
+      this.initScreen = false;
+    }, 2500);
+  }
+
 
 
   next() {
